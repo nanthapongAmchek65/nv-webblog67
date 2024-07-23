@@ -1,22 +1,21 @@
 let express = require ('express');
 let bodyparser = require('body-parser');
+const {sequelize} = require('./models') 
+
 
 const app = express();
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.urlencoded({extended: true}));
 
-app.get('/showmyname', function (req, res){
-    console.log('---------------------------------------')
-    console.log('req');
-    console.log('---------------------------------------')
-    res.send('Nanthapong Amchek');
-})
+require("./routes")(app);
 
 
 
-let port = 8081
-
-app.listen(port, function(){
-    console.log('server running on http://localhost:' + port)
-});
+let port = process.env.PORT || config.port 
+ 
+sequelize.sync({force: false}).then(() => { 
+  app.listen(port, function () { 
+    console.log('Server running on ' + port) 
+  }) 
+}) 

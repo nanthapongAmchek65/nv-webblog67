@@ -2,29 +2,25 @@
 module.exports = { 
     // get all user 
     index (req, res) { 
-    res.send('เรยกขอมล ผใชงานทงหมด') 
+    res.send('ดูข้อมูล user ทุกคน') 
     }, 
 
     // create user 
     create (req, res) { 
-    res.send('ทําการสร้างผู ้ใช้งาน: ' + JSON.stringify(req.body)) 
+    res.send('ทําการสร้างผู ้ใช้งาน: ' + JSON.stringify(req.body.username));
     }, 
 
-    // edit user, suspend, active 
-    put (req, res) { 
-    res.send('ทาการแกไขผใชงาน: ' + req.params.userId + ' : ' +
-    req.params.userId + 
-    JSON.stringify(req.body)) 
-    }, 
+    // put user
+    put(req, res){
+        res.send('แก้ไข user คนที่ ' + req.params.userId + 'ข้อมูลที่แก้ไข ' + JSON.stringify(req.body));
+    },
 
-    // delete user 
-    remove (req, res) { 
-        res.send('ทําการลบผุ ้ใช้งาน: ' + req.params.userId + ' : ' + 
-    JSON.stringify(req.body)) 
-      }, 
-     
+    //remove user
+    remove(req, res){
+        res.send('ลบ user คนที่ ' +req.params.userId);
+    },
       // get user by id 
       show (req, res) { 
-        res.send('ดูข้อมูลผู ้ใช้งาน: ' + req.params.userId) 
+        res.send('ดูข้อมูลผู ้ใช้งานทั้งหมด')
       }
     }
