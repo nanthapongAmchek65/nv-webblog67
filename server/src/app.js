@@ -1,7 +1,7 @@
 let express = require ('express');
 let bodyparser = require('body-parser');
 const {sequelize} = require('./models') 
-
+const config = require('./config/config')
 
 const app = express();
 
@@ -12,7 +12,7 @@ require("./routes")(app);
 
 
 
-let port = process.env.PORT || config.port 
+let port = config.port ;
  
 sequelize.sync({force: false}).then(() => { 
   app.listen(port, function () { 

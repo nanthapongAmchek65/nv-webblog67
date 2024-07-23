@@ -1,4 +1,4 @@
-const UserController = require('./components/UserController');
+const UserController = require('./Controller/UserController');
 
 module.exports = (app) => {
     app.get('/users',UserController.index);
