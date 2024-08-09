@@ -1,21 +1,23 @@
-let express = require ('express');
-let bodyparser = require('body-parser');
-const {sequelize} = require('./models') 
-const config = require('./config/config')
+let express = require('express');
+// import body parser
+let bodyParser = require('body-parser');
+const { sequelize } = require('./models');
+const config = require('./config/config');
+
 
 const app = express();
+// use body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended: true}));
-
-require("./routes")(app);
+// import routes
+require('./routes')(app);
 
 
+let port = config.port;
 
-let port = config.port ;
- 
-sequelize.sync({force: false}).then(() => { 
-  app.listen(port, function () { 
-    console.log('Server running on ' + port) 
-  }) 
-}) 
+sequelize.sync({ force: false }).then(() => {
+    app.listen(port, function () {
+        console.log('Server running on ' + port)
+    })
+})
