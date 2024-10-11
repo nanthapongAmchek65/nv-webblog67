@@ -1,19 +1,14 @@
 <template>
     <div class="container">
         <header class="blog-header">
-            <br><br>
-            <h2>แสดง figure ทั้งหมด</h2>
-            <!--ค้นหาข้อมูล-->
+            <h2>แสดง home ทั้งหมด</h2>
             <form>
                 <input type="text" v-model="search" placeholder="Search" aria-label="Search Blogs" />
             </form>
-            <!--สร้าง blog-->
             <div class="create-blog">
                 <button class="btn btn-success btn-sm" @click="navigateTo('/blog/create')">Create</button>
-                <!--จำนวน blog-->
-                <strong> จํานวนข้อมูล : </strong> {{ filteredBlogs.length }}
+                <strong> จำนวนข้อมูล: </strong> {{ filteredBlogs.length }}
             </div>
-            <!--ข้อมูล tag-->
             <ul class="categories">
                 <li v-for="(cate, index) in category" :key="index">
                     <a @click.prevent="setCategory(cate)" href="#">{{ cate }}</a>
@@ -23,17 +18,13 @@
             <div class="clearfix"></div>
         </header>
 
-        <transition-group name="fade">
+        <div class="blog-list-container">
             <div v-for="blog in filteredBlogs" :key="blog.id" class="blog-list">
-                <div class="blog-pic">
-                    <div class="thumbnail-pic" v-if="blog.thumbnail && blog.thumbnail !== 'null'">
-                        <img :src="BASE_URL + blog.thumbnail" alt="thumbnail">
-                    </div>
+                <div class="thumbnail-pic" v-if="blog.thumbnail && blog.thumbnail !== 'null'">
+                    <img :src="BASE_URL + blog.thumbnail" alt="thumbnail">
                 </div>
-
                 <div class="blog-info">
                     <h3>{{ blog.title }}</h3>
-                    <!--เพิ่มตัวอักษรให้เยอะขึ้น-->
                     <div v-html="blog.content.slice(0, 200) + ''"></div>
                     <p><strong>Category:</strong> {{ blog.category }}</p>
                     <p><strong>Create:</strong> {{ formatDate(blog.createdAt) }}</p>
@@ -43,9 +34,8 @@
                         <button class="btn btn-sm btn-danger" @click="deleteBlog(blog)">Delete</button>
                     </p>
                 </div>
-                <div class="clearfix"></div>
             </div>
-        </transition-group>
+        </div>
 
         <div v-if="filteredBlogs.length === 0 && !loading" class="empty-blog">
             *** ไม่มีข้อมูล ***
@@ -56,7 +46,9 @@
             </div>
         </div>
     </div>
+    
 </template>
+
 
 <script>
 import BlogsService from '@/services/BlogsService';
