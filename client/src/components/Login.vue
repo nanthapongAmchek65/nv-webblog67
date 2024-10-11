@@ -63,7 +63,7 @@ export default {
 
         // ส่งไปยังหน้าผู้ใช้
         this.$router.push({
-          name: "users",
+          name: "blogs",
         });
       } catch (error) {
         console.log(error);

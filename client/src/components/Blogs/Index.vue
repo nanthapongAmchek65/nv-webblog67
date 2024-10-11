@@ -28,6 +28,8 @@
                     <div v-html="blog.content.slice(0, 200) + ''"></div>
                     <p><strong>Category:</strong> {{ blog.category }}</p>
                     <p><strong>Create:</strong> {{ formatDate(blog.createdAt) }}</p>
+                    <p><strong>price:</strong> {{ blog.price }}</p>
+                    <p><strong>size</strong> {{ blog.size }}</p>
                     <p>
                         <button class="btn btn-sm btn-info" @click="navigateTo('/blog/' + blog.id)">View Blog</button>
                         <button class="btn btn-sm btn-warning" @click="navigateTo('/blog/edit/' + blog.id)">Edit blog</button>

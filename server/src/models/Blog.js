@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
         content: DataTypes.TEXT,
         category: DataTypes.STRING,     
         status: DataTypes.STRING,
+        price :DataTypes.INTEGER,
+        size :DataTypes.INTEGER,
     })
     return Blog
 }

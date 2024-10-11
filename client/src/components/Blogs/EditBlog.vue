@@ -55,6 +55,8 @@
       />
       <p>category: <input type="text" v-model="blog.category" /></p>
       <p>status: <input type="text" v-model="blog.status" /></p>
+      <p>price: <input type="number" v-model="blog.price"></p>
+      <p>size: <input type="number" v-model="blog.size"></p>
       <p>
         <button type="submit">update blog</button>
         <button v-on:click="navigateTo('/blogs')">กลับ</button>

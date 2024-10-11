@@ -68,6 +68,8 @@
         status:
         <input type="text" v-model="blog.status" />
       </p>
+      <p>price: <input type="number" v-model="blog.price"></p>
+      <p>size: <input type="number" v-model="blog.size"></p>
       <p>
         <button type="submit">create blog</button>
       </p>
@@ -103,6 +105,8 @@ export default {
         content: "",
         category: "",
         status: "saved",
+        price: "",
+        size: "",
       },
       config: {
         toolbar: [
